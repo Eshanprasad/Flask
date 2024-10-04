@@ -5,13 +5,16 @@
     Final Results
 </h2>
 
-<h4>You are {{res}}</h4>
 
+{% if res<50 %}           <!-- if condition  -->
+<h3>You are Failed</h3>
 
+{% else %}
+<h3>You are Passed</h3>
+
+{% endif %}      <!-- we must close the block after using  -->
 </center>
 
 
 </body>
-
-
 </html>
