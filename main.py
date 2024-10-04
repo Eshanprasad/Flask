@@ -15,7 +15,13 @@ def welcome():
 # result checker
 @app.route('/results/<int:marks>')
 def results(marks):
-    return render_template('results.html', res = marks)  #just passing the marks to results.html page, all the logics are implemented in results.html page. do check it out:)
+    res = ""
+    if marks<50:
+        result = "FAIL"
+    else:
+        result = "PASS"
+    d = {"Score": marks, "Result": result}    #Storing Score and Result in Dictionary d
+    return render_template('results.html', res = d)  #passing dictionary d to HTML page to print it
 
 
 @app.route('/submit', methods=['POST', 'GET'])

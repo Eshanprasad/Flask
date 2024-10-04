@@ -4,17 +4,15 @@
 <h2>
     Final Results
 </h2>
-
-
-{% if res<50 %}           <!-- if condition  -->
-<h3>You are Failed</h3>
-
-{% else %}
-<h3>You are Passed</h3>
-
-{% endif %}      <!-- we must close the block after using  -->
+<table border="1">
+    {% for key, value in res.items() %}     {# This is a comment: Iterating through Dictionary#} 
+        <tr> 
+            <th> {{key}} </th>              {# Table header #}
+            <td> {{value}} </td>             {# Table data #}
+        </tr>
+    {% endfor %}
+</table>
 </center>
-
 
 </body>
 </html>
