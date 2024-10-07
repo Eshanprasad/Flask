@@ -1,0 +1,16 @@
+<html>
+<head>
+{# here title is a variable that should be passed from flaskblog.py #}
+
+    {% if title %}
+    <title> Flask Blog - {{title}} </title>
+    {% else %}
+    <title>Flask Blog</title>
+    {% endif %}
+</head>
+
+<body>
+    <h1>About Page</h1>
+</body>
+
+</html>

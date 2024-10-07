@@ -1,0 +1,12 @@
+1. We can have two or more route decorators for a single function.
+for example:
+@app.route('/')
+@app.route('/home')
+def welcome(name):
+    return "Hello, Welcome"
+
+consider the above example. This welcome function will be executed and displays "Hello, Welcome" in default page ("/") as well as in home page("/home")
+
+
+2.
+
