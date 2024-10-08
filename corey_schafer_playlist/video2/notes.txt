@@ -20,4 +20,7 @@ two files and we have to change it. To avoid that we can use "template inheretan
 
 * To achieve template inheretance, we nned to have a parent template(html page), 
 from there these two child pages home.html and about.html have to inherit and override.
-    
+
+3. We can only integrate bootstrap in layout.html, and we don't have to paste those bootstrap tags in home.html
+and about.html coz layout.html is the parent template and whatever is present in layout.html will also be 
+applied for home.html and about.html
