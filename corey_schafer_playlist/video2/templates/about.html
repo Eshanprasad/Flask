@@ -1,16 +1,7 @@
-<html>
-<head>
-{# here title is a variable that should be passed from flaskblog.py #}
+<!--This about.html extends layout.html-->
+{% extends "layout.html" %}
 
-    {% if title %}
-    <title> Flask Blog - {{title}} </title>
-    {% else %}
-    <title>Flask Blog</title>
-    {% endif %}
-</head>
-
-<body>
+<!--The below content block is also present in layout.html and it needs to be overrided by about.html page, so we describe it here-->
+{% block content %}
     <h1>About Page</h1>
-</body>
-
-</html>
+{% endblock %}  <!-- endblock will also work, but jinja2 template also allows us to use block name, i.e (endblock content), which is more readable-->

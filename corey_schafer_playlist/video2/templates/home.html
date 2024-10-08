@@ -1,24 +1,12 @@
-<html>
-<head>
+<!--This home.html extends layout.html-->
+{% extends "layout.html" %}
 
-    {# if we have title then "if" blog will be executed and title will be (Flask Blog - Titlename)
-     or else, "else" blog will be executed and title will be "Flask Blog"
-    #}
-    {% if title %}
-        <title> Flask Blog - {{title}} </title>
-    {% else %}
-        <title>Flask Blog</title>
-    {% endif %}
+<!--The below content block is also present in layout.html and it needs to be overrided by home.html page, so we describe it here-->
 
-
-</head>
-<body>
+{% block content %}
     {% for post in posts %}   
-        <h3> {{ post.title }} </h3>
+        <h1> {{ post.title }} </h1>
         <p>By {{ post.author }} on {{ post.date_posted }}</p>
         <p> {{ post.content }} </p>
     {% endfor %}
-    </center>
-</body>
-
-</html>
+{% endblock %}  <!-- endblock will also work, but jinja2 template also allows us to use block name, i.e (endblock content), which is more readable-->

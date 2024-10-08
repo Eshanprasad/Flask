@@ -8,5 +8,16 @@ def welcome(name):
 consider the above example. This welcome function will be executed and displays "Hello, Welcome" in default page ("/") as well as in home page("/home")
 
 
-2.
+2. As we have same code in about.html and home.html
+code:
+    {% if title %}
+    <title> Flask Blog - {{title}} </title>
+    {% else %}
+    <title>Flask Blog</title>
+    {% endif %}
+it's not a good practice to have code redundancy. If we have to change something, we have to go to these
+two files and we have to change it. To avoid that we can use "template inheretance"
 
+* To achieve template inheretance, we nned to have a parent template(html page), 
+from there these two child pages home.html and about.html have to inherit and override.
+    

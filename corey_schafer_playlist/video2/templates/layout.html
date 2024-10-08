@@ -1,0 +1,18 @@
+<html>
+<head>
+    <!-- The below title section is shared between head.html and about.html-->
+    {% if title %}
+    <title> Flask Blog - {{title}} </title>
+    {% else %}
+    <title>Flask Blog</title>
+    {% endif %}
+</head>
+
+<body>
+    <!--block is a keyword used to create a block.
+    the below block "content" is a section that the child templates gonna override -->
+    {% block content %}
+    {% endblock %}
+    <!--  The home and about templates inherits this layout template, and override the above content block-->
+</body>
+</html> 
