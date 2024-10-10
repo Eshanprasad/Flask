@@ -35,3 +35,8 @@ logout
 
 We don't have to write forms from Scratch.
 To work with forms, there are extensions. The most popular extension for working with forms is WT forms.
+
+* after building register page, when we fill all the data in the page and click signup, it shows "Method Not Allowed".
+This is because, it submits a post request back to the same route with the form data. But we didn't accept post request in that route ('/register).
+To accept post request, we need to add a list of allowed methods in our route. check for changes in route.
+Now when you click "sign up", it will not show Method Not Allowed. Now it does nothing upon clicking "Sign up"
