@@ -1,0 +1,47 @@
+<!--This register.html extends layout.html-->
+{% extends "layout.html" %}
+
+{% block content %}
+<!--content-section class is present in main.css-->
+    <div class="content-section">
+        <form action="" method="post">   <!-- when action is empty, it's just go back to the same route and post the information to the same route that we are currently on-->
+            {{ form.hidden_tag() }}   <!--hidden_tag() adds something called as CSRF token: Cross site request forgery token. This protects against certain attacks-->
+
+            <fieldset class="form-group">  <!--Boot strap class-->
+                <legend class="border-bottom mb-4">Join Today</legend>
+                <div class="form-group">
+                    {{ form.username.label(class="form-control-label") }}  <!--bootstrap-->
+                    {{ form.username(class="form-control form-control-lg") }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.email.label(class="form-control-label") }}  <!--bootstrap-->
+                    {{ form.email(class="form-control form-control-lg") }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.password.label(class="form-control-label") }}  <!--bootstrap-->
+                    {{ form.password(class="form-control form-control-lg") }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.confirm_password.label(class="form-control-label") }}  <!--bootstrap-->
+                    {{ form.confirm_password(class="form-control form-control-lg") }}
+                </div>
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-outline-info") }}  <!--bootstrap-->
+
+                </div>
+
+            </fieldset>
+
+        </form>
+
+    </div>
+
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Already have an account? <a class="ml-2" href="{{ url_for('login') }}">Sign in  </a>  <!--here login is name of the function not the name of route-->
+        </small>
+    </div>
+{% endblock content %}  

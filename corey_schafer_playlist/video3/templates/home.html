@@ -1,0 +1,19 @@
+<!--This home.html extends layout.html-->
+{% extends "layout.html" %}
+
+<!--The below content block is also present in layout.html and it needs to be overrided by home.html page, so we describe it here-->
+
+{% block content %}
+    {% for post in posts %}   
+        <article class="media content-section">
+            <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="#">{{ post.author }}</a>
+                <small class="text-muted">{{ post.date_posted }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock content %}  <!-- endblock will also work, but jinja2 template also allows us to use block name, i.e (endblock content), which is more readable-->

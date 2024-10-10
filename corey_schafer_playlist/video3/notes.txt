@@ -1,0 +1,37 @@
+1. We can have two or more route decorators for a single function.
+for example:
+@app.route('/')
+@app.route('/home')
+def welcome(name):
+    return "Hello, Welcome"
+
+consider the above example. This welcome function will be executed and displays "Hello, Welcome" in default page ("/") as well as in home page("/home")
+
+
+2. As we have same code in about.html and home.html
+code:
+    {% if title %}
+    <title> Flask Blog - {{title}} </title>
+    {% else %}
+    <title>Flask Blog</title>
+    {% endif %}
+it's not a good practice to have code redundancy. If we have to change something, we have to go to these
+two files and we have to change it. To avoid that we can use "template inheretance"
+
+* To achieve template inheretance, we nned to have a parent template(html page), 
+from there these two child pages home.html and about.html have to inherit and override.
+
+3. We can only integrate bootstrap in layout.html, and we don't have to paste those bootstrap tags in home.html
+and about.html coz layout.html is the parent template and whatever is present in layout.html will also be 
+applied for home.html and about.html
+
+
+4. in this part, we'll discuss about forms and how to validate user input.
+features:
+users can create account
+login
+make posts
+logout
+
+We don't have to write forms from Scratch.
+To work with forms, there are extensions. The most popular extension for working with forms is WT forms.
