@@ -39,4 +39,10 @@ To work with forms, there are extensions. The most popular extension for working
 * after building register page, when we fill all the data in the page and click signup, it shows "Method Not Allowed".
 This is because, it submits a post request back to the same route with the form data. But we didn't accept post request in that route ('/register).
 To accept post request, we need to add a list of allowed methods in our route. check for changes in route.
-Now when you click "sign up", it will not show Method Not Allowed. Now it does nothing upon clicking "Sign up"
+Now when you click "sign up", it will not show Method Not Allowed. Now it does nothing upon clicking "Sign up". 
+
+*It posts data and directs us back to /register page.
+So, we have no idea if the form validated properly or not.
+Before we render register template, let's put a check that checks whether we have post data and that data is valid for our form.
+
+

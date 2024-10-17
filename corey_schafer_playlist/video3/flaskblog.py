@@ -1,9 +1,9 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, flash, redirect
 from forms import RegistrationForm, LoginForm
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = "b07294eeda19942fab7d322ac480c602"
+app.config['SECRET_KEY'] = "b07294eeda19942fab7d322ac480c602"            # the SECRET_KEY is used to protect against Cross-Site Request Forgery (CSRF) attacks
 
 # assume the below list is obtained from database
 posts_list = [
@@ -38,12 +38,22 @@ def about():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    form = RegistrationForm()   # creates an object of RegistrationForm
+    form = RegistrationForm()                                                # creates an object of RegistrationForm
+    if form.validate_on_submit():                                            # this method will tell us if the form validated when it was submitted
+        flash(f'Account created for {form.username.data}!', 'success')      #bootstrap class - "success"
+        return redirect(url_for('home'))
+    
     return render_template('register.html', title = "Register", form=form)
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    form = RegistrationForm()   # creates an object of RegistrationForm
+    form = LoginForm()                                                                 # creates an object of LoginForm
+    if form.validate_on_submit():
+        if form.email.data=='admin@blog.com' and form.password.data=='password':        #just temporary email and password to check if it's working or not
+            flash('You have been logged in!', 'success')                                 #bootstrap class - "success"
+            return redirect(url_for('home'))
+        else:
+            flash("Login Unsuccessful, Please check username and password", 'danger')    #bootstrap class - danger
     return render_template('login.html', title = "Login", form=form)
 
 
