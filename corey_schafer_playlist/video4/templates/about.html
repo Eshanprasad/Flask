@@ -1,0 +1,7 @@
+<!--This about.html extends layout.html-->
+{% extends "layout.html" %}
+
+<!--The below content block is also present in layout.html and it needs to be overrided by about.html page, so we describe it here-->
+{% block content %}
+    <h1>About Page</h1>
+{% endblock content %}  <!-- endblock will also work, but jinja2 template also allows us to use block name, i.e (endblock content), which is more readable-->
