@@ -45,4 +45,60 @@ Now when you click "sign up", it will not show Method Not Allowed. Now it does n
 So, we have no idea if the form validated properly or not.
 Before we render register template, let's put a check that checks whether we have post data and that data is valid for our form.
 
+--------------------------------------------------------------------------------------------------------------------------
+video 4:
+creating virtual environmemt:
+Execute:
+    python -m venv venv
+    venv\Scripts\activate
+(above two commands activate virtual environment)
+to deactivate virtual environment, just execute "deactivate"
+
+    pip list
+(the above command lists all the installed libraries)
+
+
+1. To work with database, we are going to use SQLalchemy which is a very popular ORM - Object relational mapping
+ORM allows us to use different databases without having to change our python code
+You just need to pass in a different database url to change database.
+to install use: to install use: pip install flask-sqlalchemy
+
+execute:
+python                                                                                      # this opens python interpreter
+from flaskblog import app, db
+app.app_context().push()
+db.create_all()                                                                            # this creates instance folder and site.db file in it (this command creates database)              
+
+from flaskblog import User, Post
+user_1 = User(username='Eshan', email='eshan@gmail.com', password='password')                #this creates object of User classdb.sess
+db.session.add(user_1)                                                                         #adds user_1 to database
+user_2 = User(username='prasad', email='prasad@gmail.com', password='prasad_password')      #adds user_2 to database
+db.session.commit()                                                                         #commits 
+
+
+User.query.all()                                                                            #gets all the users in the form of list
+
+#to access the first user, we can do it in two ways
+User.query.first()                                                                  #returns the first user
+User.query.all()[0]                                                                    #returns the first user
+
+#we can also filter the results by using filter_by() method
+User.query.filter_by(username='Eshan').all()                                        #returns a list of users with username='Eshan'
+User.query.filter_by(username='Eshan').first()                                        # returns a list which consists of the first user with username='Eshan'
+User.query.get(1)                                                                    #returns a user with specific id. Here 1 is id
+
+post_1 = Post(title='Blog 1', content='First Post content', user_id='user.id')          #creates an object of post. we didn't provide any date, the current date will be assigned automaticlly
+post_2 = Post(title='Blog 2', content='Second Post content', user_id='user.id')
+db.session.add(post_1)
+db.session.add(post_2) 
+db.session.commit()
+user.posts()                                                                            #returns a list of posts of 'user"
+Posts.query.all()                                                                       #returns a list of all Post objects
+
+post = Posts.query.first()                                                                #assigns the first value of Post table to "post" variable
+post.user_id                                                                        #returns 1
+posts.author                                                                        #author column is not present in Post table, but present in User table. post is able to access author column in User due to backref
+
+db.drop_all()                                                                          #clears entire database deletes all the tables. execute db.session.commit() and db.session.remove() before db.drop_all(). Otherwise it will give error
+db.create_all()                                                                     #creates database structure
 
